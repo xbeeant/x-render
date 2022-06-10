@@ -32,6 +32,8 @@ function App({
   beforeFinish,
   onFinish = defaultFinish,
   displayType = 'column',
+  labelAlign = 'right',
+  colon = true,
   schema,
   debug,
   debugCss,
@@ -52,6 +54,7 @@ function App({
   column,
   removeHiddenData = false,
   globalProps = {},
+  renderTitle,
   ...rest
 }) {
   try {
@@ -177,6 +180,8 @@ function App({
   const store2 = useMemo(
     () => ({
       displayType,
+      labelAlign,
+      colon,
       theme,
       column: _column,
       debounceInput,
@@ -192,6 +197,8 @@ function App({
     }),
     [
       displayType,
+      labelAlign,
+      colon,
       theme,
       _column,
       debounceInput,
@@ -212,6 +219,7 @@ function App({
       widgets,
       mapping: { ...defaultMapping, ...mapping },
       onValuesChange,
+      renderTitle,
       ...form,
       // setEditing,
       // touchKey,
@@ -227,7 +235,7 @@ function App({
       // setErrorFields,
       // removeErrorField,
     }),
-    []
+    [widgets]
   );
 
   useEffect(() => {

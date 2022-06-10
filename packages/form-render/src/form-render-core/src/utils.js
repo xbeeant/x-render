@@ -116,8 +116,35 @@ export function isListType(schema) {
   );
 }
 
+export function orderProperties(properties, orderKey = 'order') {
+  const orderHash = new Map();
+  // order不为数字的数据
+  const unsortedList = [];
+  const insert = item => {
+    const [, value] = item;
+    if (typeof value[orderKey] !== 'number') {
+      unsortedList.push(item);
+      return;
+    }
+    if (orderHash.has(value[orderKey])) {
+      orderHash.get(value[orderKey]).push(item);
+    } else {
+      orderHash.set(value[orderKey], [item]);
+    }
+  };
+
+  properties.forEach(item => insert(item));
+  const sortedList = Array.from(orderHash.entries())
+    .sort(([order1], [order2]) => order1 - order2) // order值越小越靠前
+    .flatMap(([, items]) => items);
+  return sortedList.concat(unsortedList);
+}
+
 // TODO: more tests to make sure weird & wrong schema won't crush
 export function flattenSchema(_schema = {}, name = '#', parent, result = {}) {
+  // 排序
+  // _schema = orderBy(_schema, item => item.order, ['asc']);
+
   const schema = clone(_schema);
   let _name = name;
   if (!schema.$id) {
@@ -125,21 +152,28 @@ export function flattenSchema(_schema = {}, name = '#', parent, result = {}) {
   }
   const children = [];
   if (isObjType(schema)) {
-    Object.entries(schema.properties).forEach(([key, value]) => {
-      const _key = isListType(value) ? key + '[]' : key;
-      const uniqueName = _name === '#' ? _key : _name + '.' + _key;
-      children.push(uniqueName);
-      flattenSchema(value, uniqueName, _name, result);
-    });
+    orderProperties(Object.entries(schema.properties)).forEach(
+      ([key, value]) => {
+        const _key = isListType(value) ? key + '[]' : key;
+        const uniqueName = _name === '#' ? _key : _name + '.' + _key;
+        children.push(uniqueName);
+
+        flattenSchema(value, uniqueName, _name, result);
+      }
+    );
+
     schema.properties = {};
   }
   if (isListType(schema)) {
-    Object.entries(schema.items.properties).forEach(([key, value]) => {
-      const _key = isListType(value) ? key + '[]' : key;
-      const uniqueName = _name === '#' ? _key : _name + '.' + _key;
-      children.push(uniqueName);
-      flattenSchema(value, uniqueName, _name, result);
-    });
+    orderProperties(Object.entries(schema.items.properties)).forEach(
+      ([key, value]) => {
+        const _key = isListType(value) ? key + '[]' : key;
+        const uniqueName = _name === '#' ? _key : _name + '.' + _key;
+        children.push(uniqueName);
+        flattenSchema(value, uniqueName, _name, result);
+      }
+    );
+
     schema.items.properties = {};
   }
 
