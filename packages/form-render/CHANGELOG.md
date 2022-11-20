@@ -1,5 +1,70 @@
 # Changelog
 
+## 1.13.21
+
+- [!] 修复 `tableList` 和 `drawerList` 表头无法正常显示的问题
+
+## 1.13.19
+
+- [+] 删除 `formData` 中的 `index`
+
+## 1.13.17
+
+- [+] `simpleList` 和 `cardList` 支持自定义新增按钮
+- [!] `removeHiddenData` 默认设置为 `true`
+- [!] 修改 `onValuesChange` 入参形式
+- [+] 列表组件支持自定义增加与删除
+
+## 1.13.15
+
+- [+] 新增获取隐藏表单值的方法：`form.getHiddenValues()`
+- [+] 补充`display: 'block'`类型声明
+
+## 1.13.12
+
+- [+] `description`支持 html 字符
+
+## 1.13.10
+
+- [!] 修复`list`类组件的占位符显示异常的问题
+
+## 1.13.9
+
+- [+] 调整表单占位符样式
+
+## 1.13.8
+
+- [+] `cardList` schema 支持透传 `delConfirmProps`
+
+## 1.13.5
+
+- [+] `tabList` 支持拖拽
+
+## 1.13.3
+
+- [+] `collapse`模式样式优化
+
+## 1.13.1
+
+- [+] 表单校验失败时，样式与 antd 保持一致
+
+## 1.13.0
+
+- [+] `时间范围` 组件接收 `format`
+- [+] 更新发包文件内容
+
+## 1.12.1
+
+- [+] `theme:'collapse'` 新增 `幽灵模式` 和 `无边框模式`
+
+## 1.12.0
+
+- [+] `schema` 新增`theme` 字段，支持切换嵌套表单的[主题样式](https://xrender.fun/form-render/advanced/display#%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE)。
+
+## 1.11.3
+
+- [!] `schema` 中存在`type:array` 时，继承 hidden 属性时做兼容处理。
+
 ## 1.10.0
 
 - [+] `schema` 新增 `order` 属性，用于排序，值越小越靠前
@@ -333,7 +398,7 @@
 ### 1.3.1
 
 - [+] 列表支持 props/buttons 属性，用于添加更多的自定义操作按钮 ([#343](https://github.com/alibaba/x-render/issues/343))
-- [+] 添加了 `onValuesChange` 方法，用于时时更新的钩子，暂时不放文档，内部试验一下性能
+- [+] 添加了 `onValuesChange` 方法，用于实时更新的钩子，暂时不放文档，内部试验一下性能
 - [+] 添加了 `className` 这个基础属性，用于样式覆盖特定的表单元素
 - [!] 解决包体积大小问题 lodash -> lodash-es ([#341](https://github.com/alibaba/x-render/issues/341))
 - [!] 修复颜色选择器无法选中透明度的问题 ([#349](https://github.com/alibaba/x-render/issues/349))

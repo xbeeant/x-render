@@ -25,6 +25,7 @@ export { defaultMapping as mapping };
 function App({
   id,
   widgets,
+  layoutWidgets,
   mapping,
   form,
   className,
@@ -52,9 +53,11 @@ function App({
   allCollapsed = false,
   onValuesChange,
   column,
-  removeHiddenData = false,
+  removeHiddenData = true,
   globalProps = {},
+  methods = {},
   renderTitle,
+  requiredMark,
   ...rest
 }) {
   try {
@@ -155,7 +158,7 @@ function App({
     }
   };
 
-  // 组件destroy的时候，destroy form，因为useForm可能在上层，所以不一定会跟着destroy
+  // 组件 destroy 的时候，destroy form，因为useForm可能在上层，所以不一定会跟着destroy
   useEffect(() => {
     return () => {
       form.resetFields();
@@ -217,9 +220,12 @@ function App({
   const tools = useMemo(
     () => ({
       widgets,
+      layoutWidgets,
       mapping: { ...defaultMapping, ...mapping },
       onValuesChange,
       renderTitle,
+      requiredMark,
+      methods,
       ...form,
       // setEditing,
       // touchKey,
@@ -234,10 +240,19 @@ function App({
       // resetFields,
       // setErrorFields,
       // removeErrorField,
+      // validateFields,
+      // isFieldTouched,
+      // isFieldsTouched,
+      // setFieldValidating,
+      // removeFieldValidating,
+      // isFieldValidating,
+      // scrollToPath,
+      // getFieldError,
+      // getFieldsError,
+      // setFields,
     }),
     [widgets]
   );
-
   useEffect(() => {
     // 需要外部校验的情况，此时 submitting 还是 false
     if (outsideValidating === true) {

@@ -25,9 +25,9 @@
 
 FormRender 1.0 是下一代的 `React.js` 表单解决方案。项目从内核级别进行了重写，为了能切实承接日益复杂的表单场景需求。我们的目标是以强大的扩展能力对表单场景 100%的覆盖支持，同时保持开发者能快速上手，并以表单编辑器、插件、自定义组件等一系列周边产品带来极致的开发体验。在开发 1.0 的道路上，我们做了一系列的取舍，详见[0.x - 1.0 迁移文档](https://xrender.fun/form-render/migrate)
 
-<Alert>
+<!-- <Alert>
   <span>FormRender 已升级到 v1.x 版本，并对外提供中后台开箱即用 XRender 表单 / 表格 / 图表方案，如需使用老版本(v0.x)，请点击右上角 <a href="http://x-components.gitee.io/form-render/" target="_blank_"> 旧文档 </a></span>
-</Alert>
+</Alert> -->
 
 ## 安装
 
@@ -147,7 +147,7 @@ import Form, { useForm, connectForm } from 'form-render';
 | colon            | 表示是否显示 label 后面的冒号                                                  | `boolean`                                                            | 否       | true     |
 | widgets          | 自定义组件，当内置组件无法满足时使用                                           | `object`                                                             | 否       | {}       |
 | watch            | 类似于 vue 的 watch 的用法，详见[表单监听 & 回调](/form-render/advanced/watch) | `object`                                                             | 否       | {}       |
-| removeHiddenData | 提交数据的时候是否去掉已经被隐藏的元素的数据，默认不隐藏                       | `boolean`                                                            | 否       | false    |
+| removeHiddenData | 提交数据的时候是否去掉已经被隐藏的元素的数据，默认不隐藏                       | `boolean`                                                            | 否       | true     |
 | debug            | 开启 debug 模式，时时显示表单内部状态，**开发的时候强烈建议打开**              | `boolean`                                                            | 否       | false    |
 | readOnly         | 只读模式，一般用于预览展示，全文 text 展示                                     | `boolean`                                                            | 否       | false    |
 

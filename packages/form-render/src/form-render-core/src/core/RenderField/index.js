@@ -1,12 +1,18 @@
 import React, { useRef } from 'react';
 import { useStore, useStore2, useTools } from '../../hooks';
 import useDebouncedCallback from '../../useDebounce';
-import { getValueByPath, isCheckBoxType, isObjType } from '../../utils';
+import {
+  getValueByPath,
+  isCheckBoxType,
+  isObjType,
+  isBlockType,
+} from '../../utils';
 import { validateField } from '../../validator';
 import ErrorMessage from './ErrorMessage';
 import ExtendedWidget from './ExtendedWidget';
 import Extra from './Extra';
 import FieldTitle from './Title';
+import cn from 'classnames';
 
 // TODO: 之后不要直接用get，收口到一个内部方法getValue，便于全局 ctrl + f 查找
 const RenderField = props => {
@@ -36,6 +42,7 @@ const RenderField = props => {
     locale,
     watch,
   } = useStore2();
+
   const {
     onValuesChange,
     onItemChange,
@@ -43,6 +50,9 @@ const RenderField = props => {
     touchKey,
     _setErrors,
     renderTitle,
+    requiredMark,
+    setFieldValidating,
+    removeFieldValidating,
   } = useTools();
   const formDataRef = useRef();
   formDataRef.current = formData;
@@ -56,7 +66,6 @@ const RenderField = props => {
     hasError && showValidate
       ? _contentClass + ' ant-form-item-has-error'
       : _contentClass;
-
   let contentStyle = {};
 
   const debouncedSetEditing = useDebouncedCallback(setEditing, 350);
@@ -103,7 +112,7 @@ const RenderField = props => {
     }
     // 先不暴露给外部，这个api
     if (typeof onValuesChange === 'function') {
-      onValuesChange({ [dataPath]: value }, formDataRef.current);
+      onValuesChange({ dataPath, value, dataIndex }, formDataRef.current);
     }
 
     validateField({
@@ -113,6 +122,10 @@ const RenderField = props => {
       options: {
         locale,
         validateMessages,
+      },
+      formInstance: {
+        setFieldValidating,
+        removeFieldValidating,
       },
     }).then(res => {
       _setErrors(errors => {
@@ -127,6 +140,7 @@ const RenderField = props => {
     schema: _schema,
     displayType,
     renderTitle,
+    requiredMark,
   };
 
   const messageProps = {
@@ -167,6 +181,14 @@ const RenderField = props => {
     dataPath,
     children,
     watch,
+    hasError,
+  };
+
+  const displayBlock = () => {
+    if (hasError && !_schema.extra) {
+      return false;
+    }
+    return true;
   };
 
   // if (_schema && _schema.default !== undefined) {
@@ -178,10 +200,11 @@ const RenderField = props => {
     return (
       <>
         {_showTitle && <div {...placeholderTitleProps} />}
-        <div className={contentClass} style={contentStyle}>
+        <div className={contentClass} style={contentStyle} datapath={dataPath}>
           <ExtendedWidget {...widgetProps} />
-          <Extra {...widgetProps} />
           <ErrorMessage {...messageProps} />
+          <Extra {...widgetProps} />
+          {displayBlock() && <div className="field-block"></div>}
         </div>
       </>
     );
@@ -194,10 +217,11 @@ const RenderField = props => {
       <div style={{ display: 'flex' }}>
         {titleElement}
         <ErrorMessage {...messageProps} />
+        {displayBlock() && <div className="field-block"></div>}
       </div>
     );
     return (
-      <div className={contentClass} style={contentStyle}>
+      <div className={contentClass} style={contentStyle} datapath={dataPath}>
         <ExtendedWidget
           {...widgetProps}
           message={errorMessage}
@@ -206,18 +230,26 @@ const RenderField = props => {
         <Extra {...widgetProps} />
       </div>
     );
+  } else if (isBlockType(_schema)) {
+    return (
+      <div datapath={dataPath}>
+        <ExtendedWidget {...widgetProps} />
+      </div>
+    );
   }
 
   return (
     <>
       {_showTitle && titleElement}
       <div
-        className={`${contentClass} ${hideTitle ? 'fr-content-no-title' : ''}`}
+        className={cn(contentClass, { 'fr-content-no-title': hideTitle })}
         style={contentStyle}
+        datapath={dataPath}
       >
         <ExtendedWidget {...widgetProps} />
-        <Extra {...widgetProps} />
         <ErrorMessage {...messageProps} />
+        <Extra {...widgetProps} />
+        {displayBlock() && <div className="field-block"></div>}
       </div>
     </>
   );

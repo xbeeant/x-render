@@ -31,6 +31,10 @@ export default defineConfig({
       path: '/playground',
     },
     {
+      title: '常见问题',
+      path: '/faq',
+    },
+    {
       title: '周边工具',
       path: '/tools',
       children: [
@@ -47,18 +51,15 @@ export default defineConfig({
       children: [
         {
           title: 'FormRender',
-          path:
-            'https://github.com/alibaba/x-render/blob/master/packages/form-render/CHANGELOG.md',
+          path: 'https://github.com/alibaba/x-render/blob/master/packages/form-render/CHANGELOG.md',
         },
         {
           title: 'TableRender',
-          path:
-            'https://github.com/alibaba/x-render/blob/master/packages/table-render/CHANGELOG.md',
+          path: 'https://github.com/alibaba/x-render/blob/master/packages/table-render/CHANGELOG.md',
         },
         {
           title: 'ChartRender',
-          path:
-            'https://github.com/alibaba/x-render/blob/master/packages/chart-render/CHANGELOG.md',
+          path: 'https://github.com/alibaba/x-render/blob/master/packages/chart-render/CHANGELOG.md',
         },
       ],
     },
@@ -89,9 +90,13 @@ export default defineConfig({
       '@alifd/next',
     ],
   ],
+  sitemap: {
+    hostname: 'https://xrender.fun',
+  },
+  runtimePublicPath: true,
   chainWebpack(config, { webpack }) {
     config.plugin('monaco-editor').use(MonacoWebpackPlugin);
   },
-  plugins:[require.resolve('./scripts/dumi-plugin/redirect')]
+  plugins: [require.resolve('./scripts/dumi-plugin/redirect')],
   // more config: https://d.umijs.org/config
 });
