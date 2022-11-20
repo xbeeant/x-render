@@ -29,6 +29,12 @@
 .umi-test
 .env.local
 
+# dumi
+.dumi 
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production
+
 # lerna
 node_modules
 

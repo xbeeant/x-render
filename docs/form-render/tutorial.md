@@ -1,6 +1,7 @@
 ---
-order: 1
-title: 教程
+gourp:
+  title: 教程
+  order: 1
 toc: content
 ---
 
