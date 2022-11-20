@@ -44,6 +44,9 @@
     "react": ">=16.14.0",
     "react-dom": ">=16.14.0"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   }

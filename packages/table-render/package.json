@@ -56,5 +56,8 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
