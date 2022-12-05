@@ -54,9 +54,6 @@
     "antd": "4.x || 5.x",
     "react": ">=16.8.0"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   }
