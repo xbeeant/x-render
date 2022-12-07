@@ -7,7 +7,7 @@ export default {
   //   type: 'rollup',
   //   importLibToEs: true,
   // },
-  cjs: 'babel',
+  // cjs: 'babel',
   esm: {
     type: 'babel',
     importLibToEs: true,
