@@ -1,6 +1,6 @@
 ---
 order: 0
-title: 开始使用
+title: Getting Started
 ---
 
 <div style="display:flex;align-items:center;margin-bottom:24px">
