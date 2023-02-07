@@ -22,17 +22,17 @@ title: 开始使用
   </a>
 </p>
 
-阿里巴巴-中后台表单解决方案，通过 JsonSchema 协议渲染表单
+Alibaba - Middle and backend form solution, rendering forms via JsonSchema protocol
 
 
 ```shell
 npm i form-render --save
 ```
-## 使用方式
+## Usage
 
-**函数组件**
+**Function Component**
 
-使用 `useForm` hooks 创建 form 实例。
+Use `useForm` hooks to create form instances.
 ```jsx
 import React from 'react';
 import { Button } from 'antd';
@@ -42,18 +42,18 @@ const schema = {
   type: 'object',
   properties: {
     input1: {
-      title: '简单输入框',
+      title: 'input',
       type: 'string',
       required: true,
     },
     select1: {
-      title: '单选',
+      title: 'select',
       type: 'string',
       props: {
         options: [
-          { label: '早', value: 'a' },
-          { label: '中', value: 'b' },
-          { label: '晚', value: 'c' }
+          { label: 'a', value: 'a' },
+          { label: 'b', value: 'b' },
+          { label: 'c', value: 'c' }
         ]
       }
     }
@@ -67,20 +67,24 @@ export default () => {
     console.log('formData:', formData);
   };
 
+   const configProvider = {
+    locale: 'en-US'
+  }
+
   return (
     <div>
-      <FormRender form={form} schema={schema} onFinish={onFinish} />
+      <FormRender form={form} schema={schema} onFinish={onFinish} configProvider={configProvider}/>
       <Button type="primary" onClick={form.submit}>
-        提交
+        submit
       </Button>
     </div>
   );
 }
 ```
 
-**类组件**
+**Class Component**
 
-对于使用类组件的同学，可以使用 `connectForm` 替代 `useForm` hooks。
+If you use a class component, You can use `connectForm` instead of `useForm` hooks.
 
 ```jsx
 import React from 'react';
@@ -91,15 +95,15 @@ const schema = {
   type: 'object',
   properties: {
     input1: {
-      title: '简单输入框',
+      title: 'input',
       type: 'string',
       required: true,
     },
     select1: {
-      title: '单选',
+      title: 'select',
       type: 'string',
       enum: ['a', 'b', 'c'],
-      enumNames: ['早', '中', '晚'],
+      enumNames: ['a', 'b', 'c'],
     },
   },
 };
@@ -115,7 +119,7 @@ class Demo extends React.Component {
       <div>
         <FormRender form={form} schema={schema} onFinish={this.onFinish} />
         <Button type="primary" onClick={form.submit}>
-          提交
+          submit
         </Button>
       </div>
     );
@@ -124,12 +128,12 @@ class Demo extends React.Component {
 
 export default connectForm(Demo);
 ```
-## 速写 Schema
+## Fast choreography Schema
 
-对于初学者来说记住 schema 所有的字段和使用方式并非易事。为了让大家能够快速上手，建议以以下的顺序尝试。
+It is not easy for beginners to remember all the fields of schema and how to use them. To get you started quickly, we recommend trying them in the following order.
 
-1. 去 [Playground](/playground) 逛逛，那里有从基础玩法、高级功能到完整样例的所有 schema 样例。
-2. 玩转一下 [表单设计器](https://xrender.fun/generator)，拖拖拽拽导出 schema，丢到代码里生成可用表单。本质上这是一个可视化的表单生成器，支持 schema 的导入 & 导出。
+1. Go to [Playground](/playground), which has all the schema samples from basic gameplay to advanced features to complete samples.
+2. Play the [form designer](https://xrender.fun/generator), drag, and drop the exported schema into your code to generate usable forms. This is essentially a visual form generator that supports schema import & export.
 
 <div>
   <img src="https://gw.alipayobjects.com/mdn/rms_e18934/afts/img/A*4QYNTbKU6xAAAAAAAAAAAABkARQnAQ?raw=true" width="500px"/>

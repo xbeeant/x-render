@@ -201,8 +201,10 @@ const schema = {
 
 export default () => {
   const form = useForm();
-
-  return <FormRender schema={schema} form={form} />;
+  const configProvider = {
+    locale: 'en-US'
+  }
+  return <FormRender schema={schema} form={form} configProvider={configProvider}/>;
 };
 ```
 
