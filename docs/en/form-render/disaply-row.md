@@ -1,7 +1,7 @@
 ---
 order: 0
 toc: content
-group: 
+group:
   title: 最佳展示
   order: 3
 ---
@@ -202,9 +202,11 @@ const schema = {
 export default () => {
   const form = useForm();
   const configProvider = {
-    locale: 'en-US'
-  }
-  return <FormRender schema={schema} form={form} configProvider={configProvider}/>;
+    locale: 'en-US',
+  };
+  return (
+    <FormRender schema={schema} form={form} configProvider={configProvider} />
+  );
 };
 ```
 
