@@ -1,13 +1,13 @@
 ---
 order: 0
 group: 
-  title: 最佳展示
+  title: Best Use Case
   order: 3
 ---
 
-# 横向布局
+# Horizontal layout
 
-## 一、基础控件
+## 1、Basic Controls
 
 ```jsx
 import React from 'react';
@@ -18,34 +18,34 @@ const schema = {
   displayType: 'row',
   properties: {
     input1: {
-      title: '输入框',
+      title: 'input',
       type: 'string',
       props: {},
     },
     number1: {
-      title: '数字输入框',
+      title: 'numberInput',
       type: 'number',
     },
     switch1: {
-      title: '是否选择',
+      title: 'switch',
       type: 'boolean',
       widget: 'switch',
     },
     select1: {
-      title: '下拉单选',
+      title: 'select',
       type: 'string',
       widget: 'select',
       props: {
         options: [
-          { label: '早', value: 'a' },
-          { label: '中', value: 'b' },
-          { label: '晚', value: 'c' },
+          { label: 'a', value: 'a' },
+          { label: 'b', value: 'b' },
+          { label: 'c', value: 'c' },
         ],
       },
     },
     multiSelect1: {
-      title: '多选',
-      description: '下拉多选',
+      title: 'multiSelect',
+      description: 'multi-selection',
       type: 'array',
       items: {
         type: 'string',
@@ -53,27 +53,27 @@ const schema = {
       widget: 'multiSelect',
       props: {
         options: [
-          { label: '杭州', value: 'a' },
-          { label: '武汉', value: 'b' },
-          { label: '湖州', value: 'c' },
-          { label: '贵阳', value: 'd' },
+          { label: 'a', value: 'a' },
+          { label: 'b', value: 'b' },
+          { label: 'c', value: 'c' },
+          { label: 'd', value: 'd' },
         ],
       },
     },
     radio1: {
-      title: '点击单选',
+      title: 'radio',
       type: 'string',
       widget: 'radio',
       props: {
         options: [
-          { label: '早', value: 'a' },
-          { label: '中', value: 'b' },
-          { label: '晚', value: 'c' },
+          { label: 'a', value: 'a' },
+          { label: 'b', value: 'b' },
+          { label: 'c', value: 'c' },
         ],
       },
     },
     checkboxes1: {
-      title: '点击多选',
+      title: 'checkbox',
       type: 'array',
       widget: 'checkboxes',
       items: {
@@ -81,15 +81,15 @@ const schema = {
       },
       props: {
         options: [
-          { label: '杭州', value: 'a' },
-          { label: '武汉', value: 'b' },
-          { label: '湖州', value: 'c' },
-          { label: '贵阳', value: 'd' },
+          { label: 'a', value: 'a' },
+          { label: 'b', value: 'b' },
+          { label: 'c', value: 'c' },
+          { label: 'd', value: 'd' },
         ],
       },
     },
     textarea1: {
-      title: '编辑框',
+      title: 'textarea',
       type: 'string',
       format: 'textarea',
       props: {},
@@ -101,48 +101,48 @@ const schema = {
       props: {},
     },
     date1: {
-      title: '日期选择',
+      title: 'date',
       type: 'string',
       format: 'date',
     },
     dateRange1: {
-      title: '日期范围',
+      title: 'dateRange',
       type: 'range',
       format: 'dateTime',
       props: {
-        placeholder: ['开始时间', '结束时间'],
+        placeholder: ['startDate', 'endDate'],
       },
     },
     time1: {
-      title: '时间选择',
+      title: 'time',
       type: 'string',
       format: 'time',
     },
     timeRange1: {
-      title: '时间范围',
+      title: 'timeRange',
       type: 'range',
       format: 'time',
       props: {
-        placeholder: ['开始时间', '结束时间'],
+        placeholder: ['startTime', 'endTime'],
       },
     },
     checkbox1: {
-      title: '是否选择',
+      title: 'checkbox',
       type: 'boolean',
       widget: 'checkbox',
     },
     slider1: {
-      title: '带滑动条',
+      title: 'slider',
       type: 'number',
       widget: 'slider',
     },
     image1: {
-      title: '图片展示',
+      title: 'image',
       type: 'string',
       format: 'image',
     },
     color1: {
-      title: '颜色选择',
+      title: 'color',
       type: 'string',
       format: 'color',
     },
@@ -152,15 +152,15 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-## 二、嵌套控件
+## 2、Nested Controls
 
-对于嵌套类型的表单，我们内置了四种主题，分别为 collapse | card | tile | flex, 默认为 collapse 主题
+For nested forms, we have four built-in themes, collapse | card | tile | flex, the default is collapse theme.
 
-### 折叠 collapse
+### Collapse
 
 ```jsx
 import React from 'react';
@@ -172,25 +172,25 @@ const schema = {
   properties: {
     obj: {
       type: 'object',
-      title: '折叠主题',
-      description: '这是一个对象类型',
+      title: 'Object Theme',
+      description: 'It is an object type',
       widget: 'collapse',
       column: 3,
       properties: {
         input1: {
-          title: '输入框 A',
+          title: 'input A',
           type: 'string',
         },
         input2: {
-          title: '输入框 B',
+          title: 'input B',
           type: 'string',
         },
         input3: {
-          title: '输入框 C',
+          title: 'input C',
           type: 'string',
         },
         input4: {
-          title: '输入框 D',
+          title: 'input D',
           type: 'string',
         },
       },
@@ -201,11 +201,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-### 卡片 card
+### Card
 
 ```jsx
 import React from 'react';
@@ -218,24 +218,24 @@ const schema = {
     obj: {
       type: 'object',
       widget: 'card',
-      title: '卡片主题',
-      description: '这是一个对象类型',
+      title: 'Card Theme',
+      description: 'It is an object type',
       column: 3,
       properties: {
         input1: {
-          title: '输入框 A',
+          title: 'input A',
           type: 'string',
         },
         input2: {
-          title: '输入框 B',
+          title: 'input B',
           type: 'string',
         },
         input3: {
-          title: '输入框 C',
+          title: 'input C',
           type: 'string',
         },
         input4: {
-          title: '输入框 D',
+          title: 'input D',
           type: 'string',
         },
       },
@@ -246,11 +246,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-### 标题线 lineTitle
+### LineTitle
 
 ```jsx
 import React from 'react';
@@ -262,25 +262,25 @@ const schema = {
   properties: {
     obj: {
       type: 'object',
-      title: '标题线主题',
+      title: 'LineTitle Theme',
       widget: 'lineTitle',
-      description: '这是一个对象类型',
+      description: 'It is an object type',
       column: 3,
       properties: {
         input1: {
-          title: '输入框 A',
+          title: 'input A',
           type: 'string',
         },
         input2: {
-          title: '输入框 B',
+          title: 'input B',
           type: 'string',
         },
         input3: {
-          title: '输入框 C',
+          title: 'input C',
           type: 'string',
         },
         input4: {
-          title: '输入框 D',
+          title: 'input D',
           type: 'string',
         },
       },
@@ -291,11 +291,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-### 内联 subInline
+### SubInline
 
 ```jsx
 import React from 'react';
@@ -307,25 +307,25 @@ const schema = {
   properties: {
     obj: {
       type: 'object',
-      title: '内联主题',
+      title: 'SubInline Theme',
       widget: 'subInline',
-      description: '这是一个对象类型',
+      description: 'It is an object type',
       column: 3,
       properties: {
         input1: {
-          title: '输入框 A',
+          title: 'input A',
           type: 'string',
         },
         input2: {
-          title: '输入框 B',
+          title: 'input B',
           type: 'string',
         },
         input3: {
-          title: '输入框 C',
+          title: 'input C',
           type: 'string',
         },
         input4: {
-          title: '输入框 D',
+          title: 'input D',
           type: 'string',
         },
       },
@@ -336,20 +336,20 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-## 三、列表控件：List
+## 3、List Control
 
-列表的展示对于简单需求占位太多，复杂需求定制不够一直是痛点。所以我们给出了 5 种展示，充分满足从极简到复杂的所有需求。
-默认使用 widget: 'cardList'，卡片类型
+The display of the list takes up too much space for simple requirements and not enough customization for complex requirements has been a pain point. So we give 5 kinds of displays to fully satisfy all needs from minimal to complex.
+Default use widget: 'cardList', card type
 
 ### SimpleList
 
-用于展示每行只有 1-3 个简单控件的情况，紧凑排列
+For displaying only 1-3 simple controls per row, in a compact arrangement.
 
-#### simpleList：标签换行
+#### simpleList：Label line feed
 
 ```jsx
 import React from 'react';
@@ -360,22 +360,22 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '活动模版',
+      title: 'Event Template',
       type: 'array',
       widget: 'simpleList',
       items: {
         type: 'object',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -387,11 +387,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### simpleList：标签换行-带背景
+#### simpleList：Label line feed - with background
 
 ```jsx
 import React from 'react';
@@ -402,7 +402,7 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '活动模版',
+      title: 'Event Template',
       type: 'array',
       widget: 'simpleList',
       props: {
@@ -412,15 +412,15 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -432,11 +432,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### simpleList：标签内联
+#### simpleList：Label inline
 
 ```jsx
 import React from 'react';
@@ -447,7 +447,7 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '活动模版',
+      title: 'Event Template',
       type: 'array',
       widget: 'simpleList',
       display: 'inline',
@@ -455,15 +455,15 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -475,11 +475,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### simpleList：标签内联-带背景
+#### simpleList：Label line feed - with background
 
 ```jsx
 import React from 'react';
@@ -490,7 +490,7 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '活动模版',
+      title: 'Event Template',
       type: 'array',
       widget: 'simpleList',
       display: 'inline',
@@ -501,15 +501,15 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -521,15 +521,15 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
 ### CardList
 
-用于展示结构复杂，但数量不太多的 list
+Used to display lists with complex structure, but not too much content.
 
-#### cardList：折叠-标签换行
+#### cardList：Collapse - Label line feed
 
 ```jsx
 import React from 'react';
@@ -540,30 +540,30 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'cardList',
       items: {
         type: 'object',
-        title: '折叠主题',
-        description: '这是一个对象类型',
+        title: 'Card Theme',
+        description: 'It is an object type',
         column: 3,
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input4: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -575,11 +575,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### cardList：卡片-标签换行
+#### cardList：Card - Label line feed
 
 ```jsx
 import React from 'react';
@@ -590,31 +590,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'cardList',
       items: {
         type: 'object',
-        title: '卡片主题',
-        description: '这是一个对象类型',
+        title: 'Card Theme',
+        description: 'It is an object type',
         column: 3,
         widget: 'card',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input4: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -626,11 +626,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### cardList：标题线-标签换行
+#### cardList：LineTitle - Label line feed
 
 ```jsx
 import React from 'react';
@@ -641,31 +641,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'cardList',
       items: {
         type: 'object',
-        title: '标题线主题',
-        description: '这是一个对象类型',
+        title: 'LineTitle Theme',
+        description: 'It is an object type',
         column: 3,
         widget: 'lineTitle',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input4: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -677,11 +677,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### cardList：折叠-标签内联
+#### cardList：Collapse - Label inline
 
 ```jsx
 import React from 'react';
@@ -692,31 +692,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       display: 'inline',
       widget: 'cardList',
       items: {
         type: 'object',
-        title: '折叠主题',
-        description: '这是一个对象类型',
+        title: 'Collapse Theme',
+        description: 'It is an object type',
         column: 3,
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input4: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -728,11 +728,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### cardList：卡片-标签内联
+#### cardList：Card - Label inline
 
 ```jsx
 import React from 'react';
@@ -743,32 +743,32 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       display: 'inline',
       widget: 'cardList',
       items: {
         type: 'object',
-        title: '卡片主题',
-        description: '这是一个对象类型',
+        title: 'Card Theme',
+        description: 'It is an object type',
         column: 3,
         widget: 'card',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input4: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -780,11 +780,11 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### cardList：标题线-标签内联
+#### cardList：LineTitle - Label inline
 
 ```jsx
 import React from 'react';
@@ -795,32 +795,32 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       display: 'inline',
       widget: 'cardList',
       items: {
         type: 'object',
-        title: '标题线主题',
-        description: '这是一个对象类型',
+        title: 'LineTitle Theme',
+        description: 'It is an object type',
         column: 3,
         widget: 'lineTitle',
         properties: {
           input1: {
-            title: '输入框 A',
+            title: 'input A',
             type: 'string',
           },
           input2: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input3: {
-            title: '输入框 B',
+            title: 'input B',
             type: 'string',
           },
           input4: {
-            title: '输入框 C',
+            title: 'input C',
             type: 'string',
           },
         },
@@ -832,15 +832,15 @@ const schema = {
 export default () => {
   const form = useForm();
 
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
 ### DrawerList
 
-用于展示存在列表套列表，列表套对象等复杂元素的情况
+For displaying complex elements such as lists over lists, lists over objects, etc.
 
-#### drawerList：标签换行
+#### drawerList：Label line feed
 
 ```jsx
 import React from 'react';
@@ -850,31 +850,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'drawerList',
       items: {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input1',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -885,11 +885,11 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### drawerList：标签内联
+#### drawerList：Label inline
 
 ```jsx
 import React from 'react';
@@ -899,8 +899,8 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'drawerList',
       display: 'inline',
@@ -908,23 +908,23 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input1',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -935,15 +935,15 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
 ### TableList
 
-用于展示每行只有 3 - n 个简单元素的情况，特别是数据量很大需要分页的
+Used to show only 3 - n elements per row, especially when there is a large amount of data that needs to be paged.
 
-#### tableList：标签换行
+#### tableList：Label line feed
 
 ```jsx
 import React from 'react';
@@ -953,31 +953,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'tableList',
       items: {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -988,11 +988,11 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### tableList：标签内联
+#### tableList：Label inline
 
 ```jsx
 import React from 'react';
@@ -1002,8 +1002,8 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'tableList',
       display: 'inline',
@@ -1011,23 +1011,23 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -1038,15 +1038,15 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
 ### VirtualList
 
-用于展示每行只有 3 - n 个简单元素的情况，数据量大时使用滚动加载
+For displaying only 3 - n elements per row, use scroll loading for large amounts of data.
 
-#### virtualList：标签换行
+#### virtualList：Label line feed
 
 ```jsx
 import React from 'react';
@@ -1056,31 +1056,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'virtualList',
       items: {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -1091,11 +1091,11 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### virtualList：标签内联
+#### virtualList：Label inline
 
 ```jsx
 import React from 'react';
@@ -1105,8 +1105,8 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'virtualList',
       display: 'inline',
@@ -1114,23 +1114,23 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -1141,15 +1141,15 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
 ### TabList
 
-用于多标签页展示表单的情况
+For multi-tabbed presentation of forms.
 
-#### tabList：标签换行
+#### tabList：Label line feed
 
 ```jsx
 import React from 'react';
@@ -1159,31 +1159,31 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'tabList',
       items: {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -1194,11 +1194,11 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```
 
-#### tabList：标签内联
+#### tabList：Label inline
 
 ```jsx
 import React from 'react';
@@ -1208,8 +1208,8 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '对象数组',
-      description: '对象数组嵌套功能',
+      title: 'Object Arrays',
+      description: 'Object array nesting function',
       type: 'array',
       widget: 'tabList',
       display: 'inline',
@@ -1217,23 +1217,23 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: '简单输入框',
+            title: 'input',
             type: 'string',
             required: true,
           },
           input2: {
-            title: '简单输入框2',
+            title: 'input2',
             type: 'string',
           },
           input3: {
-            title: '简单输入框3',
+            title: 'input3',
             type: 'string',
           },
           select1: {
-            title: '单选',
+            title: 'select',
             type: 'string',
             enum: ['a', 'b', 'c'],
-            enumNames: ['早', '中', '晚'],
+            enumNames: ['a', 'b', 'c'],
             widget: 'select',
           },
         },
@@ -1244,6 +1244,7 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} />;
+  
+  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```

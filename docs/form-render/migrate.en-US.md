@@ -3,37 +3,36 @@ order: 0
 toc: content
 hide: true
 group: 
-  title: 其他
+  title: Other
   order: 5
 ---
 
-# V2 升级方案
-**2.x 目前进入内测阶段，请安装 alpha 版本进行体验**
+# V2 Upgrade Program
+**2.x Currently in beta, please install alpha version to experience**
 
-本文档将帮助你从 1.x 升级到 2.x 版本，同时 2.x 将不在兼容 0.x 版本
+This document will help you to upgrade from version 1.x to 2.x, while 2.x will not be compatible with version 0.x.
 
-## 特性
+## Characteristics
 
-全新的 form-render 2.0 主要具备以下特性：
+The new form-render 2.0 has the following key features：
 
-- 🚀 **更好的表单性能**：通过对 form-render 重构，底层接入 Antd Form 来实现表单的数据收集、校验等逻辑，提升表单的整体性能。有效的解决了表单数据改变表单全局刷新的问题。
-- 🎨 **全新的UI样式**：通过对中后台表单业务梳理，定制了一套全新的 UI 样式和交互规范，提升表单整体美观度 。[最佳展示](/form-render/disaply-row)
-- 🚥 **国际化**：国际化支持 【进行中】
-- 💎 **Antd V5**：对 antd V5 版本进行兼容 【进行中】
-
-
+- 🚀 **Better form performance**：By refactoring form-render, the bottom layer is connected to Antd Form to realize the logic of data collection and verification of the form and improve the overall performance of the form. Effectively solves the problem of global refresh of form data change.
+- 🎨 **New UI style**：Customized a new set of UI styles and interaction specifications to improve the overall aesthetics of the form by sorting out the business of the middle and back office forms. [Best Display](/form-render/disaply-row)
+- 🚥 **Internationalization**：International support 【In progress】
+- 💎 **Antd V5**：Compatible with antd V5 version 【In progress】
 
 
 
-## 二、有哪些不兼容的变化
 
-### API 调整
 
-#### 1. form.formData 弃用
-改用 form.getValues() 方式获取
-#### 2. onFinish 提交函数
-只有校验通过 onFinish 才会被触发，不在返回错误信息参数，为了兼容1.0版本，错误信息默认返回 []
+## What are the incompatible changes
 
+### API Adjustments
+
+#### 1. form.formData Deprecated
+Instead, use form.getValues() to get.
+#### onFinish commit function
+Only if the check passes onFinish will be triggered and no error message parameter will be returned, for compatibility with version 1.0, error messages are returned by default [].
 
 ```diff
 - const onFinish = (data, errors) => {
@@ -46,14 +45,14 @@ group:
 
 ```
 #### 3. validateFields
-errorInfo 的出参名称发生变更
+The name of the errorInfo reference has changed.
 
 ```diff
 validateFields()
   .then(values => {
     /*
     values:{
-      input1: 'input1 输入的值'
+      input1: 'input1 value'
     }
     */
   })
@@ -62,16 +61,16 @@ validateFields()
     errorInfo:
       {
 -       data: {
--         input1: 'input1 输入的值',
+-         input1: 'input1 value',
 -        },
 
 +        values: {
-+          input1: 'input1 输入的值',
++          input1: 'input1 value',
 +        },
 
 
 -        errors: [
--          { name: 'input1', error: ['input1 的error信息'] },
+-          { name: 'input1', error: ['input1 error info'] },
 -       ]
 +        errorFields: [
 +          { name: ['password'], errors: ['Please input your Password!'] },

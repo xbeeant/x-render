@@ -67,7 +67,7 @@ export default () => {
     console.log('formData:', formData);
   };
 
-   const configProvider = {
+  const configProvider = {
     locale: 'en-US'
   }
 
@@ -117,7 +117,7 @@ class Demo extends React.Component {
     const { form } = this.props;
     return (
       <div>
-        <FormRender form={form} schema={schema} onFinish={this.onFinish} />
+        <FormRender form={form} schema={schema} onFinish={this.onFinish} configProvider={{ locale: 'en-US'}}/>
         <Button type="primary" onClick={form.submit}>
           submit
         </Button>
