@@ -31,7 +31,7 @@ The new form-render 2.0 has the following key features：
 
 #### 1. form.formData Deprecated
 Instead, use form.getValues() to get.
-#### onFinish commit function
+#### 2. onFinish commit function
 Only if the check passes onFinish will be triggered and no error message parameter will be returned, for compatibility with version 1.0, error messages are returned by default [].
 
 ```diff

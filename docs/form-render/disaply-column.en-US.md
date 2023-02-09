@@ -1,11 +1,11 @@
 ---
-order: 0
+order: 1
 group: 
   title: Best Use Case
   order: 3
 ---
 
-# Horizontal Layout
+# Vertical Layout
 
 ## Basic Controls
 
@@ -15,7 +15,7 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     input1: {
       title: 'input',
@@ -168,11 +168,11 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     obj: {
       type: 'object',
-      title: 'Object Theme',
+      title: 'Collapse Theme',
       description: 'It is an object type',
       widget: 'collapse',
       column: 3,
@@ -213,7 +213,7 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     obj: {
       type: 'object',
@@ -258,7 +258,7 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     obj: {
       type: 'object',
@@ -303,7 +303,7 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     obj: {
       type: 'object',
@@ -357,7 +357,7 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Event Template',
@@ -399,101 +399,12 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Event Template',
       type: 'array',
       widget: 'simpleList',
-      props: {
-        hasBackground: true,
-      },
-      items: {
-        type: 'object',
-        properties: {
-          input1: {
-            title: 'input A',
-            type: 'string',
-          },
-          input2: {
-            title: 'input B',
-            type: 'string',
-          },
-          input3: {
-            title: 'input C',
-            type: 'string',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### simpleList：Label inline
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Event Template',
-      type: 'array',
-      widget: 'simpleList',
-      display: 'inline',
-      items: {
-        type: 'object',
-        properties: {
-          input1: {
-            title: 'input A',
-            type: 'string',
-          },
-          input2: {
-            title: 'input B',
-            type: 'string',
-          },
-          input3: {
-            title: 'input C',
-            type: 'string',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### simpleList：Label line feed - with background
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Event Template',
-      type: 'array',
-      widget: 'simpleList',
-      display: 'inline',
       props: {
         hasBackground: true,
       },
@@ -529,7 +440,7 @@ export default () => {
 
 Used to display lists with complex structure, but not too much content.
 
-#### cardList：Collapse - Label line feed
+#### cardList：Collapse
 
 ```jsx
 import React from 'react';
@@ -537,165 +448,12 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
       description: 'Object array nesting function',
       type: 'array',
-      widget: 'cardList',
-      items: {
-        type: 'object',
-        title: 'Card Theme',
-        description: 'It is an object type',
-        column: 3,
-        properties: {
-          input1: {
-            title: 'input A',
-            type: 'string',
-          },
-          input2: {
-            title: 'input B',
-            type: 'string',
-          },
-          input3: {
-            title: 'input B',
-            type: 'string',
-          },
-          input4: {
-            title: 'input C',
-            type: 'string',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### cardList：Card - Label line feed
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      widget: 'cardList',
-      items: {
-        type: 'object',
-        title: 'Card Theme',
-        description: 'It is an object type',
-        column: 3,
-        widget: 'card',
-        properties: {
-          input1: {
-            title: 'input A',
-            type: 'string',
-          },
-          input2: {
-            title: 'input B',
-            type: 'string',
-          },
-          input3: {
-            title: 'input B',
-            type: 'string',
-          },
-          input4: {
-            title: 'input C',
-            type: 'string',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### cardList：LineTitle - Label line feed
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      widget: 'cardList',
-      items: {
-        type: 'object',
-        title: 'LineTitle Theme',
-        description: 'It is an object type',
-        column: 3,
-        widget: 'lineTitle',
-        properties: {
-          input1: {
-            title: 'input A',
-            type: 'string',
-          },
-          input2: {
-            title: 'input B',
-            type: 'string',
-          },
-          input3: {
-            title: 'input B',
-            type: 'string',
-          },
-          input4: {
-            title: 'input C',
-            type: 'string',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### cardList：Collapse - Label inline
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      display: 'inline',
       widget: 'cardList',
       items: {
         type: 'object',
@@ -732,7 +490,7 @@ export default () => {
 };
 ```
 
-#### cardList：Card - Label inline
+#### cardList：Card
 
 ```jsx
 import React from 'react';
@@ -740,13 +498,12 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
       description: 'Object array nesting function',
       type: 'array',
-      display: 'inline',
       widget: 'cardList',
       items: {
         type: 'object',
@@ -784,7 +541,7 @@ export default () => {
 };
 ```
 
-#### cardList：LineTitle - Label inline
+#### cardList：LineTitle
 
 ```jsx
 import React from 'react';
@@ -792,13 +549,12 @@ import FormRender, { useForm } from 'form-render';
 
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
       description: 'Object array nesting function',
       type: 'array',
-      display: 'inline',
       widget: 'cardList',
       items: {
         type: 'object',
@@ -840,70 +596,18 @@ export default () => {
 
 For displaying complex elements such as lists over lists, lists over objects, etc.
 
-#### drawerList：Label line feed
-
 ```jsx
 import React from 'react';
 import FormRender, { useForm } from 'form-render';
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
       description: 'Object array nesting function',
       type: 'array',
       widget: 'drawerList',
-      items: {
-        type: 'object',
-        properties: {
-          input1: {
-            title: 'input1',
-            type: 'string',
-            required: true,
-          },
-          input2: {
-            title: 'input2',
-            type: 'string',
-          },
-          input3: {
-            title: 'input3',
-            type: 'string',
-          },
-          select1: {
-            title: 'select',
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumNames: ['a', 'b', 'c'],
-            widget: 'select',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### drawerList：Label inline
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      widget: 'drawerList',
-      display: 'inline',
       items: {
         type: 'object',
         properties: {
@@ -943,14 +647,12 @@ export default () => {
 
 Used to show only 3 - n elements per row, especially when there is a large amount of data that needs to be paged.
 
-#### tableList：Label line feed
-
 ```jsx
 import React from 'react';
 import FormRender, { useForm } from 'form-render';
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
@@ -961,57 +663,7 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: 'input',
-            type: 'string',
-            required: true,
-          },
-          input2: {
-            title: 'input2',
-            type: 'string',
-          },
-          input3: {
-            title: 'input3',
-            type: 'string',
-          },
-          select1: {
-            title: 'select',
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumNames: ['a', 'b', 'c'],
-            widget: 'select',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### tableList：Label inline
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      widget: 'tableList',
-      display: 'inline',
-      items: {
-        type: 'object',
-        properties: {
-          input1: {
-            title: 'input',
+            title: 'input1',
             type: 'string',
             required: true,
           },
@@ -1046,75 +698,26 @@ export default () => {
 
 For displaying only 3 - n elements per row, use scroll loading for large amounts of data.
 
-#### virtualList：Label line feed
-
 ```jsx
 import React from 'react';
 import FormRender, { useForm } from 'form-render';
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
       description: 'Object array nesting function',
       type: 'array',
       widget: 'virtualList',
-      items: {
-        type: 'object',
-        properties: {
-          input1: {
-            title: 'input',
-            type: 'string',
-            required: true,
-          },
-          input2: {
-            title: 'input2',
-            type: 'string',
-          },
-          input3: {
-            title: 'input3',
-            type: 'string',
-          },
-          select1: {
-            title: 'select',
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumNames: ['a', 'b', 'c'],
-            widget: 'select',
-          },
-        },
+      props: {
+        scrollY: 400,
       },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### virtualList：Label inline
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      widget: 'virtualList',
-      display: 'inline',
       items: {
         type: 'object',
         properties: {
           input1: {
-            title: 'input',
+            title: 'input1',
             type: 'string',
             required: true,
           },
@@ -1149,14 +752,12 @@ export default () => {
 
 For multi-tabbed presentation of forms.
 
-#### tabList：Label line feed
-
 ```jsx
 import React from 'react';
 import FormRender, { useForm } from 'form-render';
 const schema = {
   type: 'object',
-  displayType: 'row',
+  displayType: 'column',
   properties: {
     list: {
       title: 'Object Arrays',
@@ -1167,7 +768,7 @@ const schema = {
         type: 'object',
         properties: {
           input1: {
-            title: 'input',
+            title: 'input1',
             type: 'string',
             required: true,
           },
@@ -1194,57 +795,6 @@ const schema = {
 
 export default () => {
   const form = useForm();
-  return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
-};
-```
-
-#### tabList：Label inline
-
-```jsx
-import React from 'react';
-import FormRender, { useForm } from 'form-render';
-const schema = {
-  type: 'object',
-  displayType: 'row',
-  properties: {
-    list: {
-      title: 'Object Arrays',
-      description: 'Object array nesting function',
-      type: 'array',
-      widget: 'tabList',
-      display: 'inline',
-      items: {
-        type: 'object',
-        properties: {
-          input1: {
-            title: 'input',
-            type: 'string',
-            required: true,
-          },
-          input2: {
-            title: 'input2',
-            type: 'string',
-          },
-          input3: {
-            title: 'input3',
-            type: 'string',
-          },
-          select1: {
-            title: 'select',
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumNames: ['a', 'b', 'c'],
-            widget: 'select',
-          },
-        },
-      },
-    },
-  },
-};
-
-export default () => {
-  const form = useForm();
-  
   return <FormRender schema={schema} form={form} configProvider={{ locale: 'en-US'}} />;
 };
 ```

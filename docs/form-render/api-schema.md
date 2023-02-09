@@ -16,7 +16,7 @@ group:
 {
   type: 'object', 
   displayType: 'column', 
-  colmn: 1, 
+  column: 1, 
   properties: {}
 }
 ```
@@ -48,7 +48,7 @@ type: 'object'（固定配置）
 detail: { // detail 是字段名
   title: '基础信息',
   type: 'object',
-  colmn: 1,
+  column: 1,
   widget: 'collapse',
   props: {},
   properties: {}
