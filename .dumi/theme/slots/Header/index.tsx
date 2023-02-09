@@ -1,6 +1,7 @@
 import React from 'react';
 import DumiLogo from 'dumi/theme-default/slots/Logo';
 import DumiSearch from 'dumi/theme-default/slots/SearchBar';
+import { Link } from 'dumi';
 
 import './index.less';
 
@@ -9,15 +10,15 @@ const prefix = 'xr-doc-header';
 const navs = [
   {
     title: 'FormRender',
-    link: '/formRender',
+    link: '/form-render',
   },
   {
     title: 'TableRender',
-    link: '/tableRender',
+    link: '/table-render',
   },
   {
     title: 'ChartRender',
-    link: '/chartRender',
+    link: '/chart-render',
   },
 ]
 
@@ -30,11 +31,11 @@ const Header: React.FC = () => {
           <DumiSearch />
         </div>
         <div className={`${prefix}-right`}>
-          <ul className={`${prefix}-nav`}>
+          <div className={`${prefix}-nav`}>
             {navs.map(i => (
-              <li key={i.title} onClick={() => { }}>{i.title}</li>
+              <Link key={i.title} to={i.link}>{i.title}</Link>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>
