@@ -1,0 +1,50 @@
+.xr-doc-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+  backdrop-filter: blur(10px);
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 3%), 0 1px 6px -1px rgb(0 0 0 / 2%), 0 2px 4px 0 rgb(0 0 0 / 2%);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  margin-bottom: 30px;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &-right {}
+
+  &-nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    color: #333;
+
+    &>li:hover {
+      cursor: pointer;
+      color: #1677ff;
+    }
+
+    &>li:not(:last-of-type) {
+      margin-right: 20px;
+    }
+  }
+
+  .dumi-default-search-bar {
+    margin-left: 20px;
+  }
+}
