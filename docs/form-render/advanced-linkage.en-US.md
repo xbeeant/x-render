@@ -419,6 +419,7 @@ export default () => {
       schema={schema}
       onFinish={onFinish}
       widgets={{ CustomCheckbox }}
+      locale='en-US'
     />
   );
 };

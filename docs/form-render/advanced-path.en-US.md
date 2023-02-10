@@ -43,7 +43,6 @@ const Demo = () => {
       form={form}
       schema={schema}
       onMount={onMount}
-      configProvider={{ locale: 'en-US'}}
     />
   );
 };
@@ -91,7 +90,6 @@ const Demo = () => {
       form={form}
       schema={schema}
       onMount={onMount}
-      configProvider={{ locale: 'en-US'}}
     />
   );
 };
@@ -145,7 +143,6 @@ const Demo = () => {
       form={form}
       schema={schema}
       onMount={onMount}
-      configProvider={{ locale: 'en-US'}}
     />
   );
 };
@@ -213,7 +210,7 @@ const Demo = () => {
       form={form}
       schema={schema}
       onMount={onMount}
-      configProvider={{ locale: 'en-US'}}
+      locale='en-US'
     />
   );
 };

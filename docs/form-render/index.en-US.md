@@ -67,15 +67,11 @@ export default () => {
     console.log('formData:', formData);
   };
 
-  const configProvider = {
-    locale: 'en-US'
-  }
-
   return (
     <div>
-      <FormRender form={form} schema={schema} onFinish={onFinish} configProvider={configProvider}/>
+      <FormRender form={form} schema={schema} onFinish={onFinish} locale='en-US'/>
       <Button type="primary" onClick={form.submit}>
-        submit
+        Submit
       </Button>
     </div>
   );
@@ -117,9 +113,9 @@ class Demo extends React.Component {
     const { form } = this.props;
     return (
       <div>
-        <FormRender form={form} schema={schema} onFinish={this.onFinish} configProvider={{ locale: 'en-US'}}/>
+        <FormRender form={form} schema={schema} onFinish={this.onFinish} locale='en-US' />
         <Button type="primary" onClick={form.submit}>
-          submit
+          Submit
         </Button>
       </div>
     );
@@ -137,5 +133,5 @@ It is not easy for beginners to remember all the fields of schema and how to use
 
 <div>
   <img src="https://gw.alipayobjects.com/mdn/rms_e18934/afts/img/A*4QYNTbKU6xAAAAAAAAAAAABkARQnAQ?raw=true" width="500px"/>
-  <img src="https://gw.alipayobjects.com/mdn/rms_e18934/afts/img/A*FfTuRYjRd1AAAAAAAAAAAABkARQnAQ?raw=true" alt="schema编辑器" width='500px' />
+  <img src="https://gw.alipayobjects.com/mdn/rms_e18934/afts/img/A*FfTuRYjRd1AAAAAAAAAAAABkARQnAQ?raw=true" alt="schema editor" width='500px' />
 </div>

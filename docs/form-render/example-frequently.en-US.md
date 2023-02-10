@@ -49,7 +49,7 @@ export default () => {
 
   return (
     <div>
-      <FormRender form={form} schema={schema} onFinish={onFinish} configProvider={{ locale: 'en-US'}} />
+      <FormRender form={form} schema={schema} onFinish={onFinish} />
       <Button type='primary' onClick={form.submit}>
         Submit
       </Button>
@@ -94,7 +94,7 @@ export default () => {
 
   return (
     <div>
-      <FormRender form={form} schema={schema} configProvider={{ locale: 'en-US'}} />
+      <FormRender form={form} schema={schema} />
       <Button onClick={getRemoteData}>Loading server-side data</Button>
     </div>
   );
@@ -145,7 +145,6 @@ export default () => {
       form={form}
       schema={schema}
       onMount={onMount}
-      configProvider={{ locale: 'en-US'}}
     />
   );
 }
@@ -215,7 +214,6 @@ export default () => {
       form={form}
       schema={schema}
       onMount={onMount}
-      configProvider={{ locale: 'en-US'}}
     />
   );
 }
@@ -264,7 +262,7 @@ const Demo = () => {
   
   return (
     <div>
-      <FormRender form={form} configProvider={{ locale: 'en-US'}} />
+      <FormRender form={form} />
       <Button onClick={getRemoteSchema}>Loading form schema</Button>
     </div>
   );
@@ -330,7 +328,6 @@ export default () => {
         schema={schema}
         beforeFinish={beforeFinish}
         onFinish={onFinish}
-        configProvider={{ locale: 'en-US'}}
       />
       <Button type='primary' onClick={form.submit}>
         Submit
@@ -382,7 +379,6 @@ export default () => {
         form={form} 
         schema={schema} 
         onFinish={onFinish} 
-        configProvider={{ locale: 'en-US'}}
       />
       <Space>
         <Button onClick={getRemoteData}>Loading server-side data</Button>

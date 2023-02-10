@@ -84,7 +84,6 @@ export default () => {
       schema={schema} 
       form={form} 
       builtOperation={true}
-      configProvider={{ locale: 'en-US'}}
     />
   )
 };
@@ -137,7 +136,6 @@ export default () => {
       schema={schema} 
       form={form} 
       builtOperation={true} 
-      configProvider={{ locale: 'en-US'}}
     />
   )
 };
@@ -177,7 +175,7 @@ export default () => {
       form={form} 
       builtOperation={true}
       validateMessages={validateMessages}
-      configProvider={{ locale: 'en-US'}}
+      locale='en-US'
     />
   )
 };

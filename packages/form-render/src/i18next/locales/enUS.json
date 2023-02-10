@@ -15,5 +15,7 @@
   "uploaded_address": "Uploaded address",
   "test_src": "Test address",
   "schema_not_match": "Schema does not match the display component：",
-  "item": "Item"
+  "item": "Item",
+  "submit": "Submit",
+  "reset": "Reset"
 }

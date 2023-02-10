@@ -247,7 +247,7 @@ import { useForm } from 'form-render';
 import FormRender from './Component/FormRender';
 const Demo1 = props => {
   const form = useForm();
-  return <FormRender form={form} onFinish={() => {}} configProvider={{ locale: 'en-US'}} />;
+  return <FormRender form={form} onFinish={() => {}} />;
 };
 ```
 

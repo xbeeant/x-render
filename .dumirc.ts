@@ -41,10 +41,10 @@ export default defineConfig({
           title: 'FormRender',
           link: '/en-US/form-render',
         },
-        // {
-        //   title: 'TableRender',
-        //   link: '/en-US/table-render',
-        // },
+        {
+          title: 'TableRender',
+          link: '/en-US/table-render',
+        },
         // {
         //   title: 'ChartRender',
         //   link: '/en-US/chart-render',

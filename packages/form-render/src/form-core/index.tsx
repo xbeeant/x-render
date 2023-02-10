@@ -12,14 +12,18 @@ import {
   immediateWatch,
 } from '../models/formCoreUtils';
 import RenderCore from '../render-core';
+import { useTranslation } from 'react-i18next';
 
 import './index.less';
+
 
 const FormCore = (props: any) => {
   const store = useContext(FRContext);
   const schema = useStore(store, (state: any) => state.schema);
   const flattenSchema = useStore(store, (state: any) => state.flattenSchema);
   const setContext = useStore(store, (state: any) => state.setContext);
+
+  const { t } = useTranslation()
 
   const { type, properties, ...schemProps } = schema || {};
   const {
@@ -130,9 +134,9 @@ const FormCore = (props: any) => {
             >
               <Space>
                 <Button type='primary' htmlType='submit'>
-                  提交
+                  {t('submit')}
                 </Button>
-                <Button onClick={() => form.resetFields()}>重置</Button>
+                <Button onClick={() => form.resetFields()}>{t('reset')}</Button>
               </Space>
             </Form.Item>
           </Col>

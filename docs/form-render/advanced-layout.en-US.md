@@ -102,6 +102,7 @@ export default () => {
       schema={schema} 
       // column={3}
       builtOperation={true}
+      locale='en-US'
     />
   );
 }
