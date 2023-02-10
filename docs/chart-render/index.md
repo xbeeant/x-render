@@ -30,7 +30,7 @@ title: 使用教程
 ## 简介
 
 1. **真正开箱即用**：以最简单的 API 配置请求，就能生成一个好用搜索图表。
-2. **XRender 生态**：搜索筛选能力用 [FormRender](./form-render) 来提供，以最小成本快速生成搜索面板。
+2. **XRender 生态**：搜索筛选能力用 [FormRender](/form-render) 来提供，以最小成本快速生成搜索面板。
 3. **无缝习惯使用**：表格能用 [Ant Design Charts](https://charts.ant.design/) 来提供，降低用户使用成本。
 
 ## 安装
@@ -120,7 +120,7 @@ export default withChart(App);
 
 | 属性               | 描述                                                                                                           | 类型                                              | 默认值  |
 | ------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------- | 
-| schema             | **必填**，用于渲染查询表单                                                                                       | [`FormRender.Schema`](/form-render/api/schema)    | -       | 
+| schema             | **必填**，用于渲染查询表单                                                                                       | [`FormRender.Schema`](/form-render/api-schema)    | -       | 
 | api                | **必填**，初始化&点击查询时执行的函数，详见 [Api](#api-1)                                                           | `({ filters }) => ({ meta, data })`               | -      | 
 | hidden             | 是否隐藏                                                                                                       | `boolean`                                         | `false` |
 | size               | 组件大小                                                                                                       | `'small'`                                         | -      |
@@ -128,7 +128,7 @@ export default withChart(App);
 | searchOnMount      | 组件初次挂载时，是否默认执行查询动作                                                                                | `boolean`                                         | `true`      | 
 | searchOnChange     | 表单值变化时，是否默认执行查询动作，也可以指定哪些表单字段变化时触发                                                      | `boolean` / `string[]`                           | `true`      | 
 | filters            | 固定筛选项，变化的时候会重新触发数据请求，请求时会和表单筛选项合并传入 api                                                | `object`                                          | `{}`      | 
-| ...rest            | 多余的组件参数会透传给 `FormRender`，支持 `watch`、`widgets` 等，详见 [FormRender.Props](./form-render/api/props)    | `object`                                          | `{}`      | 
+| ...rest            | 多余的组件参数会透传给 `FormRender`，支持 `watch`、`widgets` 等，详见 [FormRender.Props](./form-render/api-props)    | `object`                                          | `{}`      | 
 
 #### Api
 

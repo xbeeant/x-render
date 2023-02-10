@@ -45,15 +45,18 @@ export default defineConfig({
           title: 'TableRender',
           link: '/en-US/table-render',
         },
-        // {
-        //   title: 'ChartRender',
-        //   link: '/en-US/chart-render',
-        // },
-        // { title: '表单设计器', link: '/en-US/generator' },
-        // {
-        //   title: 'Playground',
-        //   link: '/en-US/playground',
-        // }
+        {
+          title: 'ChartRender',
+          link: '/en-US/chart-render',
+        },
+        { 
+          title: '表单设计器', 
+          link: '/en-US/generator' 
+        },
+        {
+          title: 'Playground',
+          link: '/en-US/playground',
+        }
       ]
     },
   },
