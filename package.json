@@ -95,5 +95,8 @@
     "yorkie": "^2.0.0",
     "zustand": "4.1.5",
     "less": "^3.0.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1"
   }
 }
