@@ -1,22 +1,22 @@
 ---
 order: 1
 group: 
-  title: 高级用法
+  title: Advanced Usage
   order: 1
 ---
 
-# 表单联动
-- 通过 函数表达式实现简单联动
-- 通过 watch 监听实现复杂联动
-- 通过 dependencies 实现组件之间复杂联动
+# Form Linkage
+- Simple linkage via function expressions.
+- Complex linkage via watch listener.
+- Complex linkage between components via dependencies.
 
-## 简单联动
-### 函数表达式
+## Simple linkage
+### Function expressions
 
-表单联动是开发中常见的交互，为此我们创造了这种简洁的配置方式来支持联动。通过函数表达式来控制表单项的隐藏、是否可编辑等联动交互。
+Form linkage is a common interaction in development, for which we created this simple configuration to support linkage. The linkage interaction can be controlled by function expressions to hide form items, whether they are editable or not, etc.
 
-表达式特征：
-- 函数表达式为字符串，并以双花括号`"{{...}}"`为语法特征。除 default、rules 以外，schema 里的字段都支持函数表达式。例如
+Expression characteristics：
+- The function expression is a string with double brackets `"{{...}}" ` as a syntax feature. All fields in schema support function expressions except default and rules. For example:
 
 ```json
 {
@@ -24,13 +24,13 @@ group:
 }
 ```
 
-表达式关键字：
-- formData: 整个表单的值，根据 path 路径获取对应表单项的值，例如：formData.x.y 
-- rootValue: 表单上一层级的值，只在 List 场景使用
+Expression keywords:
+- formData: the value of the whole form, get the value of the corresponding form item according to the path path, for example: formData.x.y.
+- rootValue: the value of the form at the upper level, only used in List scenarios.
 
-总结：
+Summary：
 
-### formData 示例
+### formData Example
 ```jsx
 import React from 'react';
 import FormRender, { useForm } from 'form-render';
@@ -40,12 +40,12 @@ const schema = {
   displayType: 'row',
   properties: {
     switch1: {
-      title: '隐藏输入框',
+      title: 'Hide input',
       type: 'boolean',
       widget: 'switch'
     },
     input1: {
-      title: '输入框',
+      title: 'input',
       type: 'string',
       required: true,
       hidden: '{{ formData.switch1 === true }}',
@@ -65,7 +65,7 @@ export default () => {
 };
 ```
 
-### rootValue 示例
+### rootValue Example
 ```jsx
 import React from 'react';
 import FormRender, { useForm } from 'form-render';
@@ -75,19 +75,19 @@ const schema = {
   displayType: 'row',
   properties: {
     list: {
-      title: '会员活动',
+      title: 'Member Activities',
       type: 'array',
       display: 'inline',
       items: {
         type: 'object',
         properties: {
           switch1: {
-            title: '隐藏输入框',
+            title: 'Hide input',
             type: 'boolean',
             widget: 'switch'
           },
           input1: {
-            title: '输入框',
+            title: 'input',
             type: 'string',
             required: true,
             hidden: '{{ rootValue.switch1 === true }}',
@@ -113,15 +113,15 @@ export default () => {
 };
 ```
 
-## 复杂联动
+## Complex linkage
 
-### watch 监听
-watch: 用于监听表单数据改变从而唤起回调，它是一个对象集合，根据 path 路径注册相应的表单项监听事件
+### watch Listening
+watch: Used to listen for changes in form data to invoke callbacks, it is a collection of objects that register the corresponding form item listening events according to the path path.
 ```js
 const watch = {
-  // # 为全局
+  // # for global
   '#': val => {
-    console.log('表单的实时数据为：', val);
+    console.log('The real-time data of the form is：', val);
   },
   input1: val => {
     if (val !== undefined) {
@@ -138,9 +138,9 @@ const watch = {
 };
 ```
 
-### 修改 value 
+### Modify value 
 
-form.setValueByPath：指定路径对值进行修改。[path 路径详见](/form-render/advanced-path)。
+form.setValueByPath：specify the path to modify the value. [path is detailed in](en-US/form-render/advanced-path)。
 
 ```jsx
 import React from 'react';
@@ -151,12 +151,12 @@ const schema = {
   displayType: 'row',
   properties: {
     input1: {
-      title: '输入框 A',
+      title: 'input A',
       type: 'string',
-      placeholder: '给输入框 B 赋值',
+      placeholder: 'Assign a value to input B',
     },
     input2: {
-      title: '输入框 B',
+      title: 'input B',
       type: 'string',
       disabled: true
     },
@@ -167,9 +167,9 @@ export default () => {
   const form = useForm();
 
   const watch = {
-    // # 为全局
+    // # for global
     '#': val => {
-      console.log('表单的实时数据为：', val);
+      console.log('The real-time data of the form is：', val);
     },
     input1: val => {
       form.setValueByPath('input2', val);
@@ -184,9 +184,9 @@ export default () => {
 };
 ```
 
-### 修改 schema
+### Modify schema
 
-form.setSchemaByPath：指定路径对 schema 进行修改 (不允许通过此 API 修改 value、defalut)。[path 路径详见](/form-render/advanced-path)。
+form.setSchemaByPath：Specify the path to modify the schema (value, defalut are not allowed to be modified through this API). [path is detailed in](en-US/form-render/advanced-path)。
 
 ```jsx
 import React, { useEffect } from 'react';
@@ -197,15 +197,15 @@ const schema = {
   displayType: 'row',
   properties: {
     input1: {
-      title: '输入框',
+      title: 'input',
       type: 'number',
-      placeholder: '当值大于1时，会改变单选框的选项',
+      placeholder: 'When the value is greater than 1, it changes the options in the radio',
     },
     radio: {
-      title: '单选框',
+      title: 'radio',
       type: 'string',
       enum: ['a', 'b', 'c'],
-      enumNames: ['早', '中', '晚'],
+      enumNames: ['a', 'b', 'c'],
       widget: 'radio'
     }
   }
@@ -225,7 +225,7 @@ export default () => {
         return ;
       }
 
-      form.setSchemaByPath('radio', { enumNames: ['早', '中', '晚'] });
+      form.setSchemaByPath('radio', { enumNames: ['a', 'b', 'c'] });
     }
   };
 
@@ -239,13 +239,13 @@ export default () => {
 };
 ```
 
-## 依赖项关联
-dependencies：用于完成组件内部复杂的联动逻辑，依赖的字段更新时，该组件将自动触发更新与校验。
-- 类型：path[]，设置依赖字段，支持多个依赖字段
-- 获取依赖值：组件内通过 props.dependValues 获取依赖值集合
+## Dependency Linkage
+dependencies：Used to complete the complex linkage logic inside the component. When the dependent fields are updated, the component will automatically trigger the update and validation.
+- Type：path[]，Set dependency fields, support multiple dependency fields
+- Get dependency values: get the set of dependency values within the component via props.dependValues
 
-### 触发更新
-依赖值发生变化，自定义组件触发更新
+### Trigger update
+The dependency value changes and the custom component triggers an update.
 ```jsx
 import React from 'react';
 import { Input, } from 'antd';
@@ -270,11 +270,11 @@ export default () => {
     displayType: 'row',
     properties: {
       input1: {
-        title: '输入框高度',
+        title: 'Height of input',
         type: 'number'
       },
       select1: {
-        title: '输入框',
+        title: 'input',
         type: 'string',
         dependencies: ['input1'],
         widget: 'CustomTextArea'
@@ -292,8 +292,8 @@ export default () => {
 }
 ```
 
-### 触发校验
-依赖值发生变化，自定义校验触发校验
+### Trigger check
+Dependency value changes, custom checks trigger checks.
 
 ```jsx
 import React from 'react';
@@ -318,12 +318,12 @@ export default () => {
   displayType: 'row',
   properties: {
     input1: {
-      title: '密码',
+      title: 'password',
       type: 'string',
       required: true,
     },
     input2: {
-      title: '确认密码',
+      title: 'confirm password',
       type: 'string',
       dependencies: ['input1'],
       required: true,
@@ -335,7 +335,7 @@ export default () => {
             }
             return false;
           }, 
-           message: '你输入的两个密码不匹配' 
+           message: 'The two passwords you entered do not match' 
         }
       ]
     }
@@ -352,9 +352,9 @@ export default () => {
 }
 ```
 
-### 双向绑定
-- addons：简单理解就是 form 实例
-- dependValues：依赖值集合
+### Two-way binding
+- addons：The simple understanding is that the form instance.
+- dependValues：Collection of dependency values.
 
 
 ```jsx
@@ -390,20 +390,20 @@ export default () => {
     displayType: 'row',
     properties: {
       select1: {
-        title: '是否全选',
+        title: 'Whether to select all',
         type: 'boolean',
         dependencies: ['boxes'],
         widget: 'CustomCheckbox',
       },
       boxes: {
-        title: '可用操作',
-        description: '多选',
+        title: 'Available operations',
+        description: 'multiple Choice',
         type: 'array',
         items: {
           type: 'number',
         },
         enum: [1, 2, 3, 4],
-        enumNames: ['增', '删', '改', '查'],
+        enumNames: ['add', 'remove', 'modify', 'search'],
         widget: 'checkboxes',
       },
     },

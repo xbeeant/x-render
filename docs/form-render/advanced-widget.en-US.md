@@ -253,4 +253,4 @@ const Demo1 = props => {
 
 ## Built-in components
 
-Before using custom components, there may already be built-in component support. See [schema and built-in components](./api-schema.en-US.md.md)
+Before using custom components, there may already be built-in component support. See [schema and built-in components](en-US/form-render/api-schema)

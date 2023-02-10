@@ -238,7 +238,7 @@ const validateMessagesCN = {
 };
 ```
 
-- 英文模版
+- English Template
 ```Js
 const typeTemplate = "'${label}' is not a valid ${type}";
 const validateMessages = {
