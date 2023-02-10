@@ -1,6 +1,6 @@
 ---
 order: 1
-title: 使用教程
+title: Use Tutorial
 ---
 
 <div style="display:flex;align-items:center;margin-bottom:24px">
@@ -23,23 +23,23 @@ title: 使用教程
   </a>
 </p>
 
-> 易用且轻量的中后台**列表解决方案**，常用于**搜索列表页**快速生成
+> Easy to use and lightweight middle and backend **listing solution**, commonly used for **search listings page** quick generation
 
-## 简介
+## Introduction
 
-1. **真正开箱即用**：以最简单的 API 配置请求和表头的字段，就能生成一个好用搜索列表。
-2. **XRender 生态**：搜索筛选能力用 FormRender 来提供，以最小成本快速生成上侧搜索面板。
-3. **无缝习惯使用**：表格能用 Ant Design Table 来提供，降低用户使用成本。
+1. **True Out-of-the-Box**: Generate a great search list with the simplest API configuration of the request and fields in the form header.
+2. **XRender Eco**: Search filtering capabilities are provided with FormRender to quickly generate top-side search panels with minimal cost.
+3. **Seamless habit usage**: The table capability is provided with Ant Design Table to reduce user usage cost.
 
-## 安装
+## Install
 
-table-render 依赖 ant design，单独使用不要忘记安装～
+table-render depends on ant design, don't forget to install antd If use it alone ~
 
 ```sh
 npm i table-render --save
 ```
 
-## 代码演示
+## Code Demo
 
 ```jsx
 /**
@@ -54,23 +54,23 @@ const dataSource = [];
 for (let i = 0; i < 6; i++) {
   dataSource.push({
     id: i.toString(),
-    title: `标题${i + 1}`,
+    title: `Title${i + 1}`,
     created_at: new Date().getTime(),
   });
 }
 
-// 详细可见 form-render 的使用
+// Details can be found in the use of form-render
 const schema = {
   type: 'object',
   properties: {
     title: {
-      title: '标题',
+      title: 'Title',
       type: 'string',
       width: '30%',
       labelWidth: 45,
     },
     created_at: {
-      title: '创建时间',
+      title: 'Create Time',
       type: 'string',
       format: 'date',
       width: '30%',
@@ -81,18 +81,18 @@ const schema = {
 // 配置完全透传 antd table
 const columns = [
   {
-    title: '标题',
+    title: 'Title',
     dataIndex: 'title',
   },
   {
-    title: '创建时间',
+    title: 'Create Time',
     key: 'since',
     dataIndex: 'created_at',
     valueType: 'date',
   },
   {
-    title: '操作',
-    render: (row, record) => <a onClick={() => alert(row.title)}>编辑</a>,
+    title: 'Operate',
+    render: (row, record) => <a onClick={() => alert(row.title)}>Edit</a>,
   },
 ];
 
@@ -106,7 +106,7 @@ const Wrapper = () => {
   return (
     <>
       <Search schema={schema} api={searchApi} />
-      <Table headerTitle="最简表格" columns={columns} rowKey="id" />
+      <Table headerTitle="Simple Table" columns={columns} rowKey="id" />
     </>
   );
 };
@@ -118,7 +118,7 @@ export default withTable(Wrapper);
 
 ### WithTable
 
-TableRender 在底层使用了 Context 管理内部状态，`withTable` 是 Context Provider 高阶组件形式的语法糖，用户需要使用 `withTable` 包裹表格组件
+TableRender uses Context at the bottom to manage internal state, `withTable` is syntactic sugar in the form of higher-order components of the Context Provider, and the user needs to wrap the table component with `withTable`.
 
 ```js
 import { withTable，useTable } from 'table-render';
@@ -132,43 +132,43 @@ export default withTable(Page)
 
 ### Search
 
-我们将搜索相关的能力放到 `<Search />` 上面配置，包括对应的搜索筛选表单的渲染
+We put the search-related abilities into the `<Search />` configuration, including the rendering of the corresponding search filter form.
 
-| 属性               | 描述                                                                                  | 类型                                   | 默认值  |
+| Prop               | Description                                                                                  | Type                                   | Default  |
 | ------------------ | ------------------------------------------------------------------------------------- | -------------------------------------- | ------- | 
-| schema             | **必填**，用于渲染查询表单，详见[form-render 文档](/form-render/schema/schema) | [SchemaBase](https://github.com/alibaba/x-render/blob/master/packages/form-render/src/index.d.ts#L16)                               | -       | 
-| api                | **必填**，初始化&点击查询时执行的函数，详见[Api](#api-1)                                                          | [ApiType](https://github.com/alibaba/x-render/blob/master/packages/table-render/src/interface.ts#L94)                 | -       | 
-| onSearch           | 在表格查询时执行一些额外的操作                                                        | `(params) => void`                             | -       |
-| afterSearch        | 在表格查询结束后执行一些额外的操作                                                    | `(params) => void`                             | -       |
-| searchOnMount      | 组件初次挂载时，是否默认执行查询动作                                                  | `boolean`                              | true  | 
-| hidden             | 是否隐藏 `<Search />` 组件                                                              | `boolean`                              | false |
-| searchBtnRender    | 自定义表单查询按钮                                                                    | `(refresh,clearSearch) => ReactNode[]` | -       | 
-| searchBtnStyle     | 自定义表单操作按钮组的样式                                                            | `CSSProperties`                  | -      | 
-| searchBtnClassName | 自定义表单操作按钮组的 ClassName                                                      | `string`                               | -      | 
-| searchWithError    | 表单校验失败时，是否继续执行查询操作                                                  | `boolean`                              | true    |
-| searchText         | 自定义查询按钮的文本                                                                  | `string`                               | 查询  | 
-| resetText          | 自定义重置按钮的文本                                                                  | `string`                               | 重置  | 
-| debug              | 开启 debug 模式，时时显示内部状态，**开发的时候强烈建议打开**                         | `boolean`                              | false |
+| schema             | **Required** for rendering query forms, see [form-render documentation](en-US/form-render/api-schema) | [SchemaBase](https://github.com/alibaba/x-render/blob/master/packages/form-render/src/index.d.ts#L16)                               | -       | 
+| api                | **Required**, initialize & click on the function executed on query, see [Api](#api-1) for details                                                         | [ApiType](https://github.com/alibaba/x-render/blob/master/packages/table-render/src/interface.ts#L94)                 | -       | 
+| onSearch           | Perform some additional operations on table queries                                                        | `(params) => void`                             | -       |
+| afterSearch        | Perform some additional operations at the end of the form query                                                    | `(params) => void`                             | -       |
+| searchOnMount      | Whether the query action is executed by default when the component is first mounted                                                  | `boolean`                              | true  | 
+| hidden             | Whether to hide the `<Search />` component                                                             | `boolean`                              | false |
+| searchBtnRender    | Custom form query button                                                                    | `(refresh,clearSearch) => ReactNode[]` | -       | 
+| searchBtnStyle     | Customize the style of the form action button group                                                           | `CSSProperties`                  | -      | 
+| searchBtnClassName | ClassName of the custom form action button group                                                     | `string`                               | -      | 
+| searchWithError    | Whether to continue the query operation when the form validation fails                                                  | `boolean`                              | true    |
+| searchText         | Customize the text of the query button                                                                  | `string`                               | Search  | 
+| resetText          | Customize the text of the reset button                                                                  | `string`                               | Reset  | 
+| debug              | Turn on debug mode to show the internal status at all times, **it is highly recommended when developing**                        | `boolean`                              | false |
 
 #### Api
 
- `api` 有两个入参：`params`、`sorter`，分别是表单筛选项的值、排序参数。`api` 需要返回一个对象，此对象中必须要有 `rows` 和 `total`。
-表单查询时 `api` 会被自动调用，同时带入最新的表单值和其他查询参数
+`api` has two input parameters: `params`, `sorter`, which are the values of the form filter items, and the sorting parameters, respectively. `api` needs to return an object that must have `rows` and `total` in it.
+The `api` will be called automatically when the form is queried, bringing in the latest form values and other query parameters.
  
 ```jsx | pure
 const searchApi = async (params, sorter) => {
   const result = await getTableData(params, sorter);
 
   return {
-    rows: result.list,    // rows 对应表格的 tableSource，必须返回
-    total: result.total,  // total 对应数据的总数，用于分页，必须返回
+    rows: result.list,    // rows corresponds to the tableSource of the table and must return
+    total: result.total,  // total Total number of corresponding data, used for paging, must be returned
   }
 }
 
 <Search api={searchAPi} />
 ```
 
-可以通过数组形式传入多个 `api` 函数，Table-Render 会自动生成对应的 tab
+You can pass in multiple `api` functions as an array, and Table-Render will automatically generate the corresponding tabs.
 
 ```jsx | pure
 
@@ -188,11 +188,11 @@ const searchPeople = async (params) => {
   }
 }
 
-// 需要额外的 name 属性，作为 tab 的名称
+// requires an additional name attribute, which is the name of the tab
 <Search 
   api={[
-    { name: '酒店数据', api: searchHotel },
-    { name: '人员数据', api: searchPeople },
+    { name: 'Hotel Data', api: searchHotel },
+    { name: 'People Data', api: searchPeople },
   ]}
 />
 
@@ -200,50 +200,50 @@ const searchPeople = async (params) => {
 
 ### Table
 
-支持所有 antd table 的 [props](https://ant-design.antgroup.com/components/table-cn/#Table)，但是`dataSource`, `loading`, `pagination`这几个参数是内部状态，不需要填写
+Supports [props](https://ant-design.antgroup.com/components/table-cn/#Table) for all antd tables, but the parameters `dataSource`, `loading`, `pagination` are internal states. You don't need to fill in.
 
-| 属性                  | 描述                                                                      | 类型                | 默认值      |
+| Prop                  | Description                                                                      | Type                | Default     |
 | --------------------- | ------------------------------------------------------------------------- | ------------------- | ----------- |
-| headerTitle           | 表格标题                                                                  | `string \| ReactNode`| - | -   |
-| toolbarRender         | 表格主体右上方的控件，例如“添加”按钮                                      | `() => ReactNode[]` | false     |
-| toolbarAction         | 显示在表格主体右上方的 Icon 列表，内置了刷新、调整密度、全屏显示等功能 | `boolean`           | false     |
-| pageChangeWithRequest | 切换分页时是否需要请求接口                                                | `boolean`           | true      |
-| columns               | 列定义                                                                    | [ProColumnsType](#columns)    | -     |
-| debug                 | 开启 debug 模式，时时显示内部状态，**开发的时候强烈建议打开**             | `boolean`           | false     |
+| headerTitle           | Table Title                                                                  | `string \| ReactNode`| - | -   |
+| toolbarRender         | Controls at the top right of the form body, such as the "Add" button                                      | `() => ReactNode[]` | false     |
+| toolbarAction         | Icon list displayed at the top right of the table body, with built-in functions for refreshing, adjusting density, full-screen display, etc. | `boolean`           | false     |
+| pageChangeWithRequest | Whether to request an interface when switching paging                                                | `boolean`           | true      |
+| columns               | Column Definition                                                                    | [ProColumnsType](#columns)    | -     |
+| debug                 | Turn on debug mode to show the internal status at all times, **it is highly recommended when developing**            | `boolean`           | false     |
 
 ### Columns
 
-columns 为 antd 已有的 props，支持 antd 所有的 [columns](https://ant.design/components/table-cn/#Column) 配置，同时也提供了一些更方便的 api，加快书写
+columns is the existing props of antd, supporting all the [columns](https://ant.design/components/table-cn/#Column) configurations of antd, and also providing some more convenient api to speed up the writing
 
-| 属性      | 描述                                                | 类型                                                  | 默认值 |
+| Prop      | Description                                                | Type                                                  | Default |
 | --------- | --------------------------------------------------- | ----------------------------------------------------- | ------ |
-| ellipsis  | 是否自动缩略                                        | `boolean`                                               | -      |
-| copyable  | 是否支持复制                                        | `boolean`                                               | -      |
-| valueType | 值的类型，详见 [ValueType](#valuetype)                 | `'text' \| 'money' \| 'date' \| 'dateTime'` | text |
-| enum      | 当前列值的枚举，详见[Enum](#enum) | `object`                                              | -      |
+| ellipsis  | Whether to auto-abbreviate                                        | `boolean`                                               | -      |
+| copyable  | Whether to support replication                                        | `boolean`                                               | -      |
+| valueType | The type of the value, see [ValueType](#valuetype)                 | `'text' \| 'money' \| 'date' \| 'dateTime'` | text |
+| enum      | For an enumeration of current values, see [Enum](#enum) | `object`.                                              | -      |
 
 #### ValueType
 
-TableRender 封装了一些常用的值类型来减少重复的 render 操作，配置一个 valueType 即可展示格式化响应的数据
+TableRender encapsulates some common value types to reduce repetitive render operations, and configures a valueType to display the formatted response data.
 
-  | 属性     | 描述                                                               |
+  | Prop     | Description                                                               |
   | -------- | ------------------------------------------------------------------ |
-  | text     | 普通的文本类型                                                     |
-  | date     | 当数据是日期类型的返回时，会自动将格式转换为 `YYYY-MM-DD`          |
-  | dateTime | 当数据是日期类型的返回时，会自动将格式转换为 `YYYY-MM-DD HH:mm:ss` |
-  | money    | 当数据是金额时，会自动将格式转换为 `¥0,0.00`               |
+  | text     | Common text type                                                     |
+  | date     | When data is returned as a date type, the format is automatically converted to `YYYY-MM-DD`.          |
+  | dateTime | When data is returned as a date type, the format is automatically converted to `YYYY-MM-DD HH:mm:ss` |
+  | money    | When the data is an amount, the format will be automatically converted to `¥0,0.00`              |
 
   ```js
   const columns = [
     {
-      title: '酒店GMV',
+      title: 'Hotel GMV',
       dataIndex: 'money',
-      valueType: 'money', // 自动将格式转换为 '¥0,0.00'  
+      valueType: 'money', // Automatically convert the format to '¥0,0.00'  
     },
     {
-      title: '成立时间',
+      title: 'Create Time',
       dataIndex: 'created_at',
-      valueType: 'date', // 自动将格式转换为 'YYYY-MM-DD' 
+      valueType: 'date', // Automatically convert the format to 'YYYY-MM-DD' 
     },
     // ...
   ]
@@ -251,16 +251,16 @@ TableRender 封装了一些常用的值类型来减少重复的 render 操作，
 
 #### Enum
 
-当前列值的枚举，方便处理表格值的映射
+Enumeration of current column values to facilitate the mapping of table values.
 
 ```js
 const columns = [
   {
-    title: '酒店状态'
+    title: 'Hotel Status'
     dataIndex: 'state',
     enum: {
-      open: '营业中',   // 自动将 open 转换为 营业中
-      closed: '已打烊', // 自动将 closed 转换为 已打烊
+      open: 'In business',   // Automatically converts open to In business
+      closed: 'Closed', // Automatically converts close to Closed
     },
   },
   // ...
@@ -269,17 +269,17 @@ const columns = [
 
 ### UseTable
 
-可通过 `useTable` 获取如下 `table-render` 的 context
+The context of `table-render` can be obtained via `useTable` as follows
 
-| 属性       | 描述                                                                                                                 | 类型       |
+| Prop       | Description                                                                                                                 | Type       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- | ---------- |
-| tableState | 这些是全局的状态，根据需要使用                                                                                       | [TableStateType](#tablestate)   |
-| refresh    | 刷新表格数据，详见[Refresh](#refresh)                                                                                                         | `(config, search) => Promise<void>` |
-| setTable   | 用于修改全局状态的工具函数，setTable 之于 tableState，等同 setState 之于 state                                       | `(tableState) => void` |
-| changeTab  | 手动切换 tab 的函数，例如目前两个搜索 tab： “我的活动”，“全部活动” （分别对应 tab 值为 0 和 1），详见[ChangeTab](#changetab)                      | `(tab) => void` |
-| form       | Search 组件是 form-render 生成的，可以取到搜索表单的 form 实例以及挂在上面的方法，例如 `form.resetFields` 清空搜索项 | `object`   |
+| tableState | These are global states and are used as needed                                                                                       | [TableStateType](#tablestate)   |
+| refresh    | Refresh the table data, see [Refresh] for details(#refresh)                                                                                                         | `(config, search) => Promise<void>` |
+| setTable   | Tool function for modifying the global state, setTable is the same as tableState, setState is the same as state                                       | `(tableState) => void` |
+| changeTab  | Functions for manually switching tabs, e.g. the two current search tabs: "My Activity", "All Activity" (corresponding to tab values 0 and 1 respectively), see [ChangeTab](#changetab)                      | `(tab) => void` |
+| form       | The Search component is generated by form-render and can fetch the form instance of the search form and the methods hanging on it, e.g. `form.resetFields` to clear the search items | `object`   |
 
-导出 useTable 以及对应的方法
+Export the useTable and the corresponding methods:
 
   ```js
   import { useTable } from 'table-render';
@@ -287,49 +287,49 @@ const columns = [
   ```
 
 #### TableState
-表单的全局状态 `tableState` 包含的如下的数据
+The global state of a form `tableState` contains the following data.
 
   ```js
   {
-    loading: false, // 表单是否在加载中
-    search: {},     // 选项数据
-    searchApi,      // 搜索用的api
-    tab: 0,         // 如果 searchApi 为多个，会自动生成相应个数的 tab，这里代表的是当前的 tab 的 key
-    dataSource: [], // 表格的数据
-    extraData: { }, // 自定义的扩展信息
+    loading: false, // Whether the table is loading or not
+    search: {},     // Option Data
+    searchApi,      // api for search
+    tab: 0,         // If searchApi is multiple, it will automatically generate the corresponding number of tabs, here is the key of the current tab
+    dataSource: [], // Table Data
+    extraData: { }, // Customized extended information
     pagination: {
-      current: 1,   // 当前页码
-      pageSize: 10, // 当前页数
-      total: 100,   // 总数
+      current: 1,   // Current page
+      pageSize: 10, // Current pageSize
+      total: 100,   // Total
     },
   }
   ```
 
 #### Refresh
 
-主动触发表单刷新的方法
+Methods for actively triggering form refreshes.
 
 ```ts
 type Refresh = (
   config?: { 
-    stay: boolean, // 刷新之后是否停留在目前的页码上，默认 false，回到第一页
-    tab: number    // searchApi 有多个时，用于强制搜索某个 tab 对应的 searchApi
+    stay: boolean, // Whether to stay on the current page after refresh, default false, back to the first page
+    tab: number    // When there are multiple searchApi, it is used to force the searchApi corresponding to a certain tab to be searched.
   },
-  search?: any     // 额外传递给 searchApi 的参数
+  search?: any     // Additional parameters to be passed to searchApi
 ) => Promise<void>;
 
 
 const { refresh } = useTable();
 
 const onClick = () => {
-  refresh({ stay: true }); // 刷新数据，但停留在现有的页码
+  refresh({ stay: true }); // Refresh the data, but stay at the existing page number
 }
 
 ```
 
 #### ChangeTab
 
-手动切换当前 tab 的方法
+Manually switch the current tab
 
   ```ts
   type ChangeTab = (
@@ -340,6 +340,6 @@ const onClick = () => {
   const { changeTab } = useTable();
 
   const onClick = () => {
-    changeTab(1);   // 手动切换到对应tab
+    changeTab(1);   // Manually switch to the corresponding tab
   };
   ```

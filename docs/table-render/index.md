@@ -136,7 +136,7 @@ export default withTable(Page)
 
 | 属性               | 描述                                                                                  | 类型                                   | 默认值  |
 | ------------------ | ------------------------------------------------------------------------------------- | -------------------------------------- | ------- | 
-| schema             | **必填**，用于渲染查询表单，详见[form-render 文档](/form-render/schema/schema) | [SchemaBase](https://github.com/alibaba/x-render/blob/master/packages/form-render/src/index.d.ts#L16)                               | -       | 
+| schema             | **必填**，用于渲染查询表单，详见[form-render 文档](/form-render/api-schema) | [SchemaBase](https://github.com/alibaba/x-render/blob/master/packages/form-render/src/index.d.ts#L16)                               | -       | 
 | api                | **必填**，初始化&点击查询时执行的函数，详见[Api](#api-1)                                                          | [ApiType](https://github.com/alibaba/x-render/blob/master/packages/table-render/src/interface.ts#L94)                 | -       | 
 | onSearch           | 在表格查询时执行一些额外的操作                                                        | `(params) => void`                             | -       |
 | afterSearch        | 在表格查询结束后执行一些额外的操作                                                    | `(params) => void`                             | -       |
